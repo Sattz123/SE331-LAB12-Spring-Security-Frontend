@@ -6,6 +6,7 @@ import OrganizerListView from '@/views/organizer/OrganizerListView.vue'
 import OrganizerDetailView from '@/views/organizer/OrganizerDetailView.vue'
 import EventListView from '@/views/EventListView.vue'
 import AboutView from '@/views/AboutView.vue'
+import LoginView from '@/views/LoginView.vue'
 import EventDetailView from '@/views/event/DetailView.vue'
 import EventRegisterView from '@/views/event/RegisterView.vue'
 import EventEditView from '@/views/event/EditView.vue'
@@ -48,6 +49,11 @@ const router = createRouter({
       name: 'organizer-detail-view',
       component: OrganizerDetailView,
       props: true,
+    },
+    {
+      path: '/login',
+      name: 'login-view',
+      component: LoginView,
     },
     {
       path: '/event/:id',
