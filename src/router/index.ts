@@ -16,6 +16,7 @@ import NotFoundView from '@/views/NotFoundView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
 import nProgress from 'nprogress'
 import { useEventStore } from '@/stores/event'
+import { useAuthStore } from '@/stores/auth'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -45,6 +46,10 @@ const router = createRouter({
       name: 'add-organizer',
       component: OrganizerFormView,
       beforeEnter: () => {
+        const authStore = useAuthStore()
+        if (!authStore.token || !authStore.isAdmin) {
+          return { name: 'network-error-view' }
+        }
         return OrganizerService.getOrganizers()
           .then(() => true)
           .catch(() => ({ name: 'network-error-view' }))

@@ -6,7 +6,7 @@ import ImageUpload from '@/components/ImageUpload.vue'
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 
-const organizer = ref<Omit<Organizer, 'id'>>({
+const organizer = ref<Omit<Organizer, 'id' | 'roles'>>({
   name: '',
   address: '',
   image: '',

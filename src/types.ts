@@ -14,6 +14,7 @@ export interface Event {
 export interface Organizer {
   id: number
   name: string
+  roles: string[]
   address?: string
   image?: string | null
 }

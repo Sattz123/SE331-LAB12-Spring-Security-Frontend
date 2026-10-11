@@ -13,7 +13,7 @@ export default {
       responseType: 'text',
     })
   },
-  saveOrganizer(organizer: Omit<Organizer, 'id'>) {
+  saveOrganizer(organizer: Omit<Organizer, 'id' | 'roles'>) {
     return apiClient.post<Organizer>('/organizers', organizer)
   },
 }
