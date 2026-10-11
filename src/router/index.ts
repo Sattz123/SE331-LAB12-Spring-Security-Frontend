@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventService from '@/services/EventService'
+import OrganizerService from '@/services/OrganizerService'
 import AddEventView from '@/views/event/EventFormView.vue'
 import OrganizerFormView from '@/views/organizer/OrganizerFormView.vue'
 import OrganizerListView from '@/views/organizer/OrganizerListView.vue'
@@ -43,6 +44,11 @@ const router = createRouter({
       path: '/add-organizer',
       name: 'add-organizer',
       component: OrganizerFormView,
+      beforeEnter: () => {
+        return OrganizerService.getOrganizers()
+          .then(() => true)
+          .catch(() => ({ name: 'network-error-view' }))
+      },
     },
     {
       path: '/organizer/:id',
